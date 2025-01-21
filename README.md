@@ -55,9 +55,6 @@ The analysis investigates the impact of police deployment on crime rates using w
 ### 2. `london_crime.csv`
 - The dataset used in the analysis, containing crime and socioeconomic data.
 
-### 3. `a_londoncrime_2024.docx`
-- Assignment documentation outlining the objectives and methodologies.
-
 ---
 
 ## Instructions for Use
