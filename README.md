@@ -1,10 +1,10 @@
-This repository contains a Python-based statistical analysis of the relationship between police deployment and crime rates in London's boroughs, inspired by the paper *"Panic on the Streets of London: Police, Crime, and the July 2005 Terror Attacks"* by Draca, Machin, and Witt (AER, 2011). The analysis explores the effectiveness of police as a crime deterrent using econometric methodologies.
+This repository contains an enhanced analysis of the relationship between police deployment and crime rates in London, incorporating both econometric methods and machine learning models. The study builds upon the paper *"Panic on the Streets of London: Police, Crime, and the July 2005 Terror Attacks"* by Draca, Machin, and Witt (AER, 2011).
 
 ---
 
 ## Project Overview
 
-The analysis investigates the impact of police deployment on crime rates using weekly panel data from 32 boroughs in London over two years. The dataset includes variables such as crime, police hours, population, unemployment rate, labor force participation, demographic breakdowns, and more. The primary goal is to estimate the causal effect of police presence on crime rates while addressing challenges such as reverse causation and unobserved heterogeneity.
+This analysis investigates the impact of police deployment on crime rates using weekly panel data from 32 boroughs in London over two years. The dataset includes variables such as crime, police hours, population, unemployment rate, labor force participation, demographic breakdowns, and more. The study employs econometric methods alongside machine learning models to estimate the causal effect of police presence on crime rates and to predict crime trends.
 
 ---
 
@@ -26,6 +26,11 @@ The analysis investigates the impact of police deployment on crime rates using w
      - `sixweeks_treat`: Highlights the treated boroughs during the intervention period.
    - **Objective**: Estimate the causal impact of an exogenous increase in police presence on crime rates.
 
+### 4. **Machine Learning Models**
+   - **Linear Regression**: Predicts log crime rates using features like police rate, unemployment rate, and demographic factors.
+   - **Random Forest Regressor**: A robust ensemble method for predicting log crime rates with non-linear interactions.
+   - **Evaluation Metrics**: Mean Squared Error (MSE) and R-squared (R²) are used to compare model performance.
+
 ---
 
 ## Data Description
@@ -46,14 +51,18 @@ The analysis investigates the impact of police deployment on crime rates using w
 
 ## Repository Contents
 
-### 1. `london_crime_reg.py`
-- Implements the analysis with three parts:
+### 1. `crime_ml_analysis.py`
+- Implements the analysis with four components:
   1. **Log-log regression** to estimate initial relationships.
   2. **Differenced regression** to handle unobserved heterogeneity.
   3. **Natural experiment regression** leveraging the 2005 London attacks as an exogenous shock.
+  4. **Machine learning models** (Linear Regression and Random Forest) for predictive analysis.
 
 ### 2. `london_crime.csv`
 - The dataset used in the analysis, containing crime and socioeconomic data.
+
+### 3. `README.md`
+- Documentation outlining the objectives, methodologies, and findings.
 
 ---
 
@@ -63,3 +72,39 @@ The analysis investigates the impact of police deployment on crime rates using w
    ```bash
    git clone <repository-url>
    cd <repository-name>
+   ```
+
+2. Ensure Python 3.x and the required libraries (`pandas`, `numpy`, `statsmodels`, `scikit-learn`) are installed.
+
+3. Run the analysis:
+   ```bash
+   python crime_ml_analysis.py
+   ```
+
+### Results
+The script outputs:
+- Regression summaries for:
+  - Log-log regression.
+  - Differenced regression.
+  - Natural experiment regression.
+- Machine learning performance metrics (MSE, R²) for Linear Regression and Random Forest models.
+
+---
+
+## Insights and Takeaways
+
+- **Initial Analysis**: Cross-sectional regression indicates a positive correlation between police and crime rates, likely due to reverse causation.
+- **Panel Data Analysis**: Differencing reveals a more nuanced relationship, controlling for unobserved heterogeneity.
+- **Natural Experiment**: Exogenous police increases show a significant reduction in crime rates in treated boroughs, providing causal evidence for police effectiveness.
+- **Machine Learning**: Models effectively predict crime rates, with Random Forest outperforming Linear Regression in capturing non-linear relationships.
+
+---
+
+## Author
+- **Aditya Rohatgi**
+
+---
+
+## License
+This project is licensed under the MIT License.
+
